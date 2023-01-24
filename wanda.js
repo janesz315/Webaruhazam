@@ -61,6 +61,33 @@ app.post('/products', function (req, res) {
     })
 })
 
+
+app.delete('/products/:id', function (req, res) {
+    const id = req.params.id
+    
+    fs.readFile(dataFile,(error,data) => {
+        let products = JSON.parse(data)
+        const productIndexById = products.findIndex(product => product.id === id)
+        if (productIndexById === -1) {
+            let message = {
+                error: `id: ${id} が 見つかりません`
+            }
+            res.status(404)
+            res.send(message)
+            return
+            
+        }
+        //抹消
+        products.splice(productIndexById,1)
+        //書き換える
+        products = JSON.stringify(products)
+        fs.writeFile(dataFile, products, (error) => {
+            res.send({ id: id })
+        })
+        // res.send(productById)
+    })
+})
+
 app.listen(port, ()=>{
     console.log(`Express 鯖 良い 端子:${port}`)
 })
