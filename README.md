@@ -6,9 +6,9 @@
 ## Telepítendő modulok
 ## 
 
-`npm i --save express`  
-`npm install sanitize-html `
-`npm install uniqid`
+szerver: `npm i --save express`  
+JSSS védelem. betörés ellen:`npm install sanitize-html `
+egyedi azonosító:`npm install uniqid`
 
 ## telepítés egyszerre
 ##

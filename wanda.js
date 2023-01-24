@@ -3,8 +3,12 @@ const express = require('express')
 const app = express()
 let port = 3000
 const fs = require("fs")
+const uniquid= require("uniqid")
 
 const dataFile = "./data/termekek.json";
+
+//Middleware
+app.use(express.json())
 
 //Honnan és hová
 app.get('/products', function (req, res) {
@@ -29,6 +33,31 @@ app.get('/products/:id', function (req, res) {
             return
         }
         res.send(productById)
+    })
+})
+
+app.post('/products', function (req, res) {
+    const body = req.body
+    // res.send(body)
+
+    const newProduct = {
+        id: uniquid(),
+        name: body.name,
+        quantity: body.quantity,
+        price: body.price,
+        type: body.type
+    }
+    fs.readFile(dataFile,(error,data) => {
+        //Objektum lista JSON-ból
+        let products = JSON.parse(data)
+        products.push(newProduct)
+        //JSON objektumlistából
+        //JSONに変える!
+        products = JSON.stringify(products)
+        fs.writeFile(dataFile, products,(error) => {
+            res.send(newProduct)
+
+        })
     })
 })
 
