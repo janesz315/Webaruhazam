@@ -66,4 +66,13 @@ product = {
       "type": "tejtermék"
     }
   ]
-```json
+```
+
+# 3 Get, ファイルシステム
+- branch: '03_Get_ファイルシステム`
+```rest
+### Get products
+GET http://localhost:3000/products/
+### get product by id
+GET http://localhost:3000/products/apcjbuglbfhs62f
+```
