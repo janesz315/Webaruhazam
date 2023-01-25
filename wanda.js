@@ -3,12 +3,29 @@ const express = require('express')
 const app = express()
 let port = 3000
 const fs = require("fs")
+const path = require("path")
 const uniquid= require("uniqid")
 
 const dataFile = "./data/termekek.json";
 
 //Middleware
 app.use(express.json())
+//Statikus tartalmak kiszolgálása
+app.use('/public',express.static('public'))
+
+//get home
+app.get('/', function(req, res){
+    res.sendFile(path.join(__dirname, "./frontend/cosmo.html"));
+    // res.sendfile(__dirname + "/frontend/cosmo.html")
+})
+app.get('/wando.js', function(req, res){
+    res.sendFile(path.join(__dirname, "./frontend/wando.js"));
+    // res.sendfile(__dirname + "/frontend/cosmo.html")
+})
+app.get('/leimingming.css', function(req, res){
+    res.sendFile(path.join(__dirname, "./frontend/leimingming.css"));
+    // res.sendfile(__dirname + "/frontend/cosmo.html")
+})
 
 //Honnan és hová
 app.get('/products', function (req, res) {

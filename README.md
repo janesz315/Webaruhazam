@@ -76,3 +76,8 @@ GET http://localhost:3000/products/
 ### get product by id
 GET http://localhost:3000/products/apcjbuglbfhs62f
 ```
+
+# lecția de astăzi
+ - Există, de asemenea, lecții interesante și plictisitoare
+ - Loretta nu are creier. Ea este o curvă
+# CDN server
