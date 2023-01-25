@@ -95,7 +95,7 @@ app.put("/products/:id", (req, res) => {
         const productIndexById = products.findIndex(product => product.id == id);
         if (productIndexById === -1) {
             let message = {
-                error: `id: ${id} not found`
+                error: `id: ${id} が 見つかりません`
             }
             res.status(404);
             res.send(message);
