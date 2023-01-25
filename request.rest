@@ -20,6 +20,7 @@ delete http://localhost:3000/products/apcjbuglbfhs62f
 ### put product by id
 PUT http://localhost:3000/products/igkq7a8lda2oa9o
 Content-Type: application/json
+
 {       
         "name": "Á12",
         "quantity": 221,
